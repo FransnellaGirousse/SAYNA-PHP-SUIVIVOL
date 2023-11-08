@@ -22,7 +22,7 @@ public static function find($id)
         } else {
             return null;
         }
-    
+
     }
 
 public static function getTable(){
@@ -30,4 +30,12 @@ public static function getTable(){
     $class = get_called_class();
     return $class::$table;
     }
+
+public function delete(){
+    $query = 'delete from'.$this->getTable(). 'where id=:id';
+    //execution de la requete
+    Connexion::execute($query,['id'=>$this->id]);
+
+}
+
 }
